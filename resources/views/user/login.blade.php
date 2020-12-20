@@ -96,7 +96,7 @@
                 success: function (res) {
                     if (res.status === 'success') {
                         layer.msg(res.msg, function () {
-                            window.location = '/index';
+                            window.location = '{{route('index')}}';
                         });
                     }else {
                         layer.alert(res.msg)
