@@ -17,9 +17,11 @@ class Login extends Controller
         $rule = [
             'username' => 'required|min:5',
             'password' => 'required|min:8',
+            'captcha' => 'required|captcha',
         ];
         // 表单验证
-        $credentials = $this->validate($request, $rule);
+        $this->validate($request, $rule);
+        $credentials = $request->only('username', 'password');
         if (Auth::attempt($credentials)) {
             // 认证通过的
 //            return response()->json(

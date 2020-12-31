@@ -12,7 +12,8 @@
         "caouecs/laravel-lang": "~5.0",
         "fideloper/proxy": "^4.0",
         "laravel/framework": "^6.0",
-        "laravel/tinker": "^1.0"
+        "laravel/tinker": "^1.0",
+        "mews/captcha": "^3.2"
     },
     "require-dev": {
         "barryvdh/laravel-ide-helper": "^2.8",
