@@ -10,13 +10,27 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-// 登录
-Route::get('/login', 'Login@index')->name('login');
-Route::post('/dologin', 'Login@store')->name('dologin');
 
-// 首页
-Route::get('/','Index@index')->name('index');
-// 欢迎页
-Route::get('/welcome','Index@welcome')->name('welcome');
+// 需要登录的
+Route::middleware('auth')->group(
+    function () {
+        // 首页
+        Route::get('/', 'Index@index')->name('index');
+        // 欢迎页
+        Route::get('/welcome', 'Index@welcome')->name('welcome');
+        // 退出
+        Route::get('/logout','Login@logout')->name('logout');
+    }
+);
 
-Route::get('/test','Test@index')->name('test');
+// 不需要登录的
+Route::middleware('guest')->group(
+    function () {
+        // 登录
+        Route::get('/login', 'Login@index')->name('login');
+        Route::post('/dologin', 'Login@store')->name('dologin');
+    }
+);
+
+
+Route::get('/test', 'Test@index')->name('test');

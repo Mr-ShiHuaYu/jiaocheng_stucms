@@ -4,7 +4,8 @@
     <meta charset="utf-8">
     <title>layuimini-iframe版 v2 - 基于Layui的后台管理系统前端模板</title>
     <meta name="keywords" content="layuimini,layui,layui模板,layui后台,后台模板,admin,admin模板,layui mini">
-    <meta name="description" content="layuimini基于layui的轻量级前端后台管理框架，最简洁、易用的后台框架模板，面向所有层次的前后端程序,只需提供一个接口就直接初始化整个框架，无需复杂操作。">
+    <meta name="description"
+          content="layuimini基于layui的轻量级前端后台管理框架，最简洁、易用的后台框架模板，面向所有层次的前后端程序,只需提供一个接口就直接初始化整个框架，无需复杂操作。">
     <meta name="renderer" content="webkit">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta http-equiv="Access-Control-Allow-Origin" content="*">
@@ -63,10 +64,12 @@
                     <a href="javascript:;">{{auth()->user()->name}}</a>
                     <dl class="layui-nav-child">
                         <dd>
-                            <a href="javascript:;" layuimini-content-href="page/user-setting.html" data-title="基本资料" data-icon="fa fa-gears">基本资料<span class="layui-badge-dot"></span></a>
+                            <a href="javascript:;" layuimini-content-href="page/user-setting.html" data-title="基本资料"
+                               data-icon="fa fa-gears">基本资料<span class="layui-badge-dot"></span></a>
                         </dd>
                         <dd>
-                            <a href="javascript:;" layuimini-content-href="page/user-password.html" data-title="修改密码" data-icon="fa fa-gears">修改密码</a>
+                            <a href="javascript:;" layuimini-content-href="page/user-password.html" data-title="修改密码"
+                               data-icon="fa fa-gears">修改密码</a>
                         </dd>
                         <dd>
                             <hr>
@@ -130,7 +133,7 @@
 <script src="{{asset('lib/layui-v2.5.5/layui.js')}}" charset="utf-8"></script>
 <script src="{{asset('js/lay-config.js')}}" charset="utf-8"></script>
 <script>
-    layui.use(['jquery', 'layer', 'miniAdmin','miniTongji'], function () {
+    layui.use(['jquery', 'layer', 'miniAdmin', 'miniTongji'], function () {
         var $ = layui.jquery,
             layer = layui.layer,
             miniAdmin = layui.miniAdmin,
@@ -160,8 +163,12 @@
         });
 
         $('.login-out').on("click", function () {
-            layer.msg('退出登录成功', function () {
-                window.location = 'page/login-3.html';
+            $.get('{{route('logout')}}', function (res) {
+                if (res.status === 'success') {
+                    layer.msg(res.msg, {time: 1000}, function () {
+                        window.location = '{{route('login')}}';
+                    })
+                }
             });
         });
     });

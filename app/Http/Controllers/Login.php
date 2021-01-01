@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
+use Auth;
 
 class Login extends Controller
 {
@@ -41,5 +41,12 @@ class Login extends Controller
                 ]
             );*/
         }
+    }
+
+    public function logout()
+    {
+        Auth::logout();
+        return $this->success('退出登录成功');
+
     }
 }
