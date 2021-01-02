@@ -20,6 +20,10 @@ Route::middleware('auth')->group(
         Route::get('/welcome', 'Index@welcome')->name('welcome');
         // 退出
         Route::get('/logout','Login@logout')->name('logout');
+
+        // 用户
+        Route::resource('user','User');
+        Route::get('/getuser','User@getUser')->name('getuser');
     }
 );
 

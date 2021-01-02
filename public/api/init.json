@@ -16,26 +16,20 @@
       "target": "_self",
       "child": [
         {
-          "title": "主页模板",
+          "title": "用户管理",
           "href": "",
           "icon": "fa fa-home",
           "target": "_self",
           "child": [
             {
-              "title": "主页一",
-              "href": "page/welcome-1.html",
+              "title": "用户列表",
+              "href": "user",
               "icon": "fa fa-tachometer",
               "target": "_self"
             },
             {
-              "title": "主页二",
+              "title": "老师列表",
               "href": "page/welcome-2.html",
-              "icon": "fa fa-tachometer",
-              "target": "_self"
-            },
-            {
-              "title": "主页三",
-              "href": "page/welcome-3.html",
               "icon": "fa fa-tachometer",
               "target": "_self"
             }
