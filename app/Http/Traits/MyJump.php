@@ -1,10 +1,10 @@
 <?php
 
 
-namespace App\Http;
+namespace App\Http\Traits;
 
 
-trait MyResponse
+trait MyJump
 {
 
     /**
