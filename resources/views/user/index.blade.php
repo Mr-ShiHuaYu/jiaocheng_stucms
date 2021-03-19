@@ -2,38 +2,19 @@
 
 @section('content')
     <fieldset class="table-search-fieldset">
-        <legend>搜索信息</legend>
+        <legend>搜索用户信息</legend>
         <div style="margin: 10px 10px 10px 10px">
             <form class="layui-form layui-form-pane" action="">
                 <div class="layui-form-item">
                     <div class="layui-inline">
-                        <label class="layui-form-label">用户姓名</label>
+                        <label class="layui-form-label">任意搜索</label>
                         <div class="layui-input-inline">
-                            <input type="text" name="username" autocomplete="off" class="layui-input">
+                            <input type="text" name="keyword" autocomplete="off" class="layui-input">
                         </div>
                     </div>
+
                     <div class="layui-inline">
-                        <label class="layui-form-label">用户性别</label>
-                        <div class="layui-input-inline">
-                            <input type="text" name="sex" autocomplete="off" class="layui-input">
-                        </div>
-                    </div>
-                    <div class="layui-inline">
-                        <label class="layui-form-label">用户城市</label>
-                        <div class="layui-input-inline">
-                            <input type="text" name="city" autocomplete="off" class="layui-input">
-                        </div>
-                    </div>
-                    <div class="layui-inline">
-                        <label class="layui-form-label">用户职业</label>
-                        <div class="layui-input-inline">
-                            <input type="text" name="classify" autocomplete="off" class="layui-input">
-                        </div>
-                    </div>
-                    <div class="layui-inline">
-                        <button type="submit" class="layui-btn layui-btn-primary" lay-submit
-                                lay-filter="data-search-btn"><i class="layui-icon"></i> 搜 索
-                        </button>
+                        <button type="submit" class="layui-btn" lay-submit lay-filter="data-search-btn"><i class="layui-icon"></i> 搜 索</button>
                     </div>
                 </div>
             </form>
@@ -92,19 +73,12 @@
 
             // 监听搜索操作
             form.on('submit(data-search-btn)', function (data) {
-                var result = JSON.stringify(data.field);
-                layer.alert(result, {
-                    title: '最终的搜索信息'
-                });
-
                 //执行搜索重载
                 table.reload('currentTableId', {
                     page: {
                         curr: 1
                     }
-                    , where: {
-                        searchParams: result
-                    }
+                    , where: data.field
                 }, 'data');
 
                 return false;

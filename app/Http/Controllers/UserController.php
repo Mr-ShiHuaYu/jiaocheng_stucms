@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class User extends Controller
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -22,8 +22,20 @@ class User extends Controller
         $page = request()->input('page'); // 第几页
         $limit = request()->input('limit'); // 每页多少条数据
         $offset = ($page - 1) * $limit; // 偏移
-
+        $keyword = request()->input('keyword');
         $query = \App\Models\User::query();
+
+        if ($keyword) {
+            $cols = \Schema::getColumnListing('users');
+            // 去除搜索的列
+            $cols = array_diff($cols, ['password']);
+            $sql = [];
+            foreach ($cols as $col) {
+                $sql[] = "IFNULL($col,'')";
+            }
+            $sql = join(',', $sql);
+            $query = $query->whereRaw("CONCAT($sql) like '%$keyword%'");
+        }
         $data = $query->offset($offset)->paginate($limit)->toArray();
 
         return [

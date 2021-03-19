@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Auth;
 
-class Login extends Controller
+class LoginController extends Controller
 {
     public function index()
     {

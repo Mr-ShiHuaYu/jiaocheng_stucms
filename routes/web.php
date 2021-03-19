@@ -15,15 +15,15 @@
 Route::middleware('auth')->group(
     function () {
         // 首页
-        Route::get('/', 'Index@index')->name('index');
+        Route::get('/', 'IndexController@index')->name('index');
         // 欢迎页
-        Route::get('/welcome', 'Index@welcome')->name('welcome');
+        Route::get('/welcome', 'IndexController@welcome')->name('welcome');
         // 退出
-        Route::get('/logout','Login@logout')->name('logout');
+        Route::get('/logout','LoginController@logout')->name('logout');
 
         // 用户
-        Route::resource('user','User');
-        Route::get('/getuser','User@getUser')->name('getuser');
+        Route::resource('user','UserController');
+        Route::get('/getuser','UserController@getUser')->name('getuser');
     }
 );
 
@@ -31,10 +31,10 @@ Route::middleware('auth')->group(
 Route::middleware('guest')->group(
     function () {
         // 登录
-        Route::get('/login', 'Login@index')->name('login');
-        Route::post('/dologin', 'Login@store')->name('dologin');
+        Route::get('/login', 'LoginController@index')->name('login');
+        Route::post('/dologin', 'LoginController@store')->name('dologin');
     }
 );
 
 
-Route::get('/test', 'Test@index')->name('test');
+Route::any('/test', 'TestController@index')->name('test');
