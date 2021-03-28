@@ -17,7 +17,7 @@ class LoginController extends Controller
         $rule = [
             'username' => 'required|min:5',
             'password' => 'required|min:8',
-            'captcha' => 'required|captcha',
+//            'captcha' => 'required|captcha',
         ];
         // 表单验证
         $this->validate($request, $rule);

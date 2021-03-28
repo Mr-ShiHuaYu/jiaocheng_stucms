@@ -23,7 +23,7 @@ class UserController extends Controller
         $limit = request()->input('limit'); // 每页多少条数据
         $offset = ($page - 1) * $limit; // 偏移
         $keyword = request()->input('keyword');
-        $query = \App\Models\User::query();
+        $query = \App\Models\UserModel::query();
 
         if ($keyword) {
             $cols = \Schema::getColumnListing('users');

@@ -138,7 +138,8 @@
 
                 <div class="layui-form-item">
                     <label class="layui-icon layui-icon-vercode" for="captcha"></label>
-                    <input type="text" name="captcha" lay-verify="required|captcha" placeholder="图形验证码" autocomplete="off" class="layui-input verification captcha">
+                    <input type="text" name="captcha" lay-verify="captcha" placeholder="图形验证码" autocomplete="off"
+                           class="layui-input verification captcha">
                     <div class="captcha-img">
                         <img id="captchaPic" src="{{captcha_src()}}" style="cursor: pointer" onclick="this.src='{{captcha_src()}}'+Math.random()">
                     </div>
@@ -197,6 +198,7 @@
                         });
                     } else {
                         layer.alert(res.msg, {icon: 5, time: 3000})
+                        $('#captchaPic').click();
                     }
                 }
             });
