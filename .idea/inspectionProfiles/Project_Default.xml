@@ -5,7 +5,7 @@
       <option name="DONT_REPORT_MULTI_RESOLVE" value="true" />
       <option name="DONT_INSPECT_DOCS" value="true" />
     </inspection_tool>
-    <inspection_tool class="SpellCheckingInspection" enabled="true" level="TYPO" enabled_by_default="true">
+    <inspection_tool class="SpellCheckingInspection" enabled="false" level="TYPO" enabled_by_default="false">
       <option name="processCode" value="true" />
       <option name="processLiterals" value="false" />
       <option name="processComments" value="false" />
